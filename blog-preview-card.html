@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Blog preview card</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Variables */
+      :root {
+        --color-yellow: #f4d04e;
+        --color-gray-950: #111111;
+        --color-gray-500: #6b6b6b;
+        --color-white: #ffffff;
+        --space-200: 1rem;
+        --space-150: 0.75rem;
+        --space-100: 0.5rem;
+        --space-50: 0.25rem;
+      }
+
+      /* Global styles */
+      body {
+        background: var(--color-yellow);
+        color: var(--color-gray-950);
+        display: grid;
+        font-family: "Figtree", sans-serif;
+        font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+        font-weight: 500;
+        grid-template-rows: 1fr auto;
+      }
+
+      h2 {
+        font-size: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+        font-weight: 800;
+        line-height: 1.5;
+      }
+
+      a {
+        color: currentColor;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      :focus {
+        outline: none;
+      }
+
+      :focus-visible {
+        outline-offset: 0.3ch;
+        outline: 2px solid;
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+      }
+
+      /* Compositional layouts */
+      .cluster {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space, 1rem);
+        justify-content: flex-start;
+      }
+
+      /* Utilities */
+      .visually-hidden {
+        block-size: 1px;
+        clip-path: inset(50%);
+        inline-size: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      /* Blocks */
+      .card {
+        background: var(--color-white);
+        border-radius: 20px;
+        border: 1px solid var(--color-gray-950);
+        box-shadow: 8px 8px #000000;
+        max-inline-size: clamp(20.4375rem, 19.1831rem + 5.3521vw, 24rem);
+        padding: 1.5rem;
+      }
+
+      .card .text {
+        margin-block-start: 1.5rem;
+      }
+
+      .card p:not([class]) {
+        color: var(--color-gray-500);
+      }
+
+      .card .img {
+        block-size: 12.5rem;
+      }
+
+      .card .img img {
+        block-size: 100%;
+        border-radius: 10px;
+        inline-size: 100%;
+        object-fit: cover;
+      }
+
+      .card h2 a {
+        text-decoration: none;
+      }
+
+      .card h2 a:where(:hover, :focus) {
+        color: var(--color-yellow);
+      }
+
+      .card .text > * + * {
+        margin-block-start: var(--space-150);
+      }
+
+      .card .text > :last-child {
+        margin-block-start: 1.5rem;
+      }
+
+      .badge {
+        background: var(--color-yellow);
+        border-radius: 4px;
+        font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
+        font-weight: 800;
+        inline-size: max-content;
+        padding: var(--space-50) var(--space-150);
+      }
+
+      .card__meta {
+        font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
+      }
+
+      .author__avatar {
+        --space: var(--space-150);
+        font-weight: 800;
+      }
+
+      .site-foot {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="visually-hidden">Blog preview card</h1>
+      <article class="card">
+        <div class="img">
+          <img src="assets/images/illustration-article.svg" alt="" />
+        </div>
+        <div class="text">
+          <p class="badge">Learning</p>
+          <p class="card__meta">
+            Published <time datetime="2023-12-21">21 Dec 2023</time>
+          </p>
+          <h2><a href="">HTML & CSS foundations</a></h2>
+          <p>
+            These languages are the backbone of every website, defining
+            structure, content, and presentation.
+          </p>
+          <figure class="author__avatar cluster">
+            <img
+              src="assets/images/image-avatar.webp"
+              alt="Greg Hooper's avatar"
+              width="32"
+              height="32"
+            />
+            <figcaption>Greg Hooper</figcaption>
+          </figure>
+        </div>
+      </article>
+    </main>
+    <footer class="site-foot">
+      <p>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by Jasper.
+      </p>
+    </footer>
+  </body>
+</html>

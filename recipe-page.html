@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Recipe page</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Variables */
+      :root {
+        --font-base: "Outfit", sans-serif;
+        --font-display: "Young Serif", serif;
+        --color-rose-800: #7a284e;
+        --color-rose-50: #fff7fb;
+        --color-stone-900: #312e2c;
+        --color-stone-600: #5f564d;
+        --color-stone-150: #e3ddd7;
+        --color-stone-100: #f3e5d7;
+        --color-brown-800: #854632;
+        --color-white: #ffffff;
+        --space-1600: 8rem;
+        --space-600: 3rem;
+        --space-500: 2.5rem;
+        --space-400: 2rem;
+        --space-300: 1.5rem;
+        --space-200: 1rem;
+        --space-150: 0.75rem;
+        --space-100: 0.5rem;
+      }
+
+      /* Global styles */
+      body {
+        background: var(--color-stone-100);
+        color: var(--color-stone-900);
+        font-family: var(--font-base);
+        font-size: 1rem;
+      }
+
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      h3 {
+        color: var(--color-brown-800);
+        font-size: 1.75rem;
+      }
+
+      ul,
+      ol {
+        padding-inline-start: 1.7ch;
+      }
+
+      ul {
+        list-style-type: disc;
+      }
+
+      :is(ul, ol) > li {
+        padding-inline-start: var(--space-200);
+      }
+
+      ul ::marker {
+        color: var(--color-brown-800);
+        font-size: 0.5lh;
+      }
+
+      ol ::marker {
+        color: var(--color-brown-800);
+        font-size: 1em;
+        font-weight: 700;
+      }
+
+      table {
+        border-collapse: collapse;
+        inline-size: 100%;
+      }
+
+      th {
+        font-weight: 400;
+        padding-inline-start: var(--space-400);
+        text-align: start;
+      }
+
+      td,
+      th {
+        padding-block: var(--space-150);
+      }
+
+      tr + tr :is(th, td) {
+        border-block-start: 1px solid var(--color-stone-150);
+      }
+
+      td {
+        color: var(--color-brown-800);
+        font-weight: 700;
+        padding-inline: var(--space-200) var(--space-400);
+      }
+
+      a {
+        color: currentColor;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      :focus {
+        outline: none;
+      }
+
+      :focus-visible {
+        outline-offset: 0.3ch;
+        outline: 2px solid;
+      }
+
+      hr {
+        border: none;
+        border-block-start: 1px solid var(--color-stone-150);
+      }
+
+      @media (min-width: 750px) {
+        main {
+          padding: var(--space-1600) var(--space-600);
+        }
+      }
+
+      /* Compositional layouts */
+      .flow > * + * {
+        margin-block-start: var(--flow-space, 1em);
+      }
+
+      /* Utilities */
+      .font-bold {
+        font-weight: 700;
+      }
+
+      .visually-hidden {
+        block-size: 1px;
+        clip-path: inset(50%);
+        inline-size: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      /* Blocks */
+      .card {
+        background: var(--color-white);
+        color: var(--color-stone-600);
+      }
+
+      .card .text {
+        padding: var(--space-500) var(--space-400);
+      }
+
+      .card .img img {
+        block-size: 100%;
+        inline-size: 100%;
+        object-fit: cover;
+      }
+
+      .card h2 {
+        color: var(--color-stone-900);
+      }
+
+      .prep-time {
+        background: var(--color-rose-50);
+        border-radius: 12px;
+        padding: var(--space-300);
+      }
+
+      .prep-time h3 {
+        color: var(--color-rose-800);
+        font-family: var(--font-base);
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .prep-time ul {
+        margin-block-start: var(--space-200);
+      }
+
+      .prep-time ul::marker {
+        color: var(--color-rose-800);
+      }
+
+      .prose {
+        --flow-space: var(--space-400);
+      }
+
+      .prose :is(h2, h3) + * {
+        --flow-space: var(--space-300);
+      }
+
+      .prose table {
+        --flow-space: var(--space-300);
+      }
+
+      .prose :is(ul, ol) li + li {
+        margin-block-start: var(--space-100);
+      }
+
+      .site-foot {
+        padding: 1rem;
+      }
+
+      @media (min-width: 750px) {
+        .card {
+          border-radius: 24px;
+          margin-inline: auto;
+          max-inline-size: clamp(38.5rem, 30.3478rem + 17.3913vw, 46rem);
+          padding: var(--space-500);
+        }
+
+        .card .text {
+          margin-block-start: var(--space-500);
+          padding: 0;
+        }
+
+        .card .img {
+          block-size: 18.75rem;
+        }
+
+        .card .img img {
+          border-radius: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="visually-hidden">Recipe page</h1>
+      <article class="card">
+        <div class="img">
+          <img
+            src="assets/images/image-omelette.jpeg"
+            alt="A white plate topped with an omelette, tomato hummus, kimchi, and vegetables."
+          />
+        </div>
+        <div class="text prose flow">
+          <h2>Simple Omelette Recipe</h2>
+          <p>
+            An easy and quick dish, perfect for any meal. This classic omelette
+            combines beaten eggs cooked to perfection, optionally filled with
+            your choice of cheese, vegetables, or meats.
+          </p>
+          <div class="prep-time">
+            <h3>Preparation time</h3>
+            <ul>
+              <li>
+                <span class="font-bold">Total</span>: Approximately 10 minutes
+              </li>
+              <li><span class="font-bold">Preparation</span>: 5 minutes</li>
+              <li><span class="font-bold">Cooking</span>: 5 minutes</li>
+            </ul>
+          </div>
+          <h3>Ingredients</h3>
+          <ul>
+            <li>2-3 large eggs</li>
+            <li>Salt, to taste</li>
+            <li>Pepper, to taste</li>
+            <li>1 tablespoon of butter or oil</li>
+            <li>
+              Optional fillings: cheese, diced vegetables, cooked meats, herbs
+            </li>
+          </ul>
+          <hr />
+          <h3>Instructions</h3>
+          <ol>
+            <li>
+              <strong>Beat the eggs</strong>: In a bowl, beat the eggs with a
+              pinch of salt and pepper until they are well mixed. You can add a
+              tablespoon of water or milk for a fluffier texture.
+            </li>
+            <li>
+              <strong>Heat the pan</strong>: Place a non-stick frying pan over
+              medium heat and add butter or oil.
+            </li>
+            <li>
+              <strong>Cook the omelette</strong>: Once the butter is melted and
+              bubbling, pour in the eggs. Tilt the pan to ensure the eggs evenly
+              coat the surface.
+            </li>
+            <li>
+              <strong>Add fillings (optional)</strong>: When the eggs begin to
+              set at the edges but are still slightly runny in the middle,
+              sprinkle your chosen fillings over one half of the omelette.
+            </li>
+            <li>
+              <strong>Fold and serve</strong>: As the omelette continues to
+              cook, carefully lift one edge and fold it over the fillings. Let
+              it cook for another minute, then slide it onto a plate.
+            </li>
+            <li>
+              <strong>Enjoy</strong>: Serve hot, with additional salt and pepper
+              if needed.
+            </li>
+          </ol>
+          <hr />
+          <h3>Nutrition</h3>
+          <p>
+            The table below shows nutritional values per serving without the
+            additional fillings.
+          </p>
+          <table>
+            <tr>
+              <th>Calories</th>
+              <td>277kcal</td>
+            </tr>
+            <tr>
+              <th>Carbs</th>
+              <td>0g</td>
+            </tr>
+            <tr>
+              <th>Protein</th>
+              <td>20g</td>
+            </tr>
+            <tr>
+              <th>Fat</th>
+              <td>22g</td>
+            </tr>
+          </table>
+        </div>
+      </article>
+    </main>
+    <footer class="site-foot">
+      <p>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by Jasper.
+      </p>
+    </footer>
+  </body>
+</html>
