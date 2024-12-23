@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Product preview card component</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Variables */
+      :root {
+        --font-base: "Montserrat", sans-serif;
+        --font-display: "Fraunces", serif;
+        --color-viridian: #3d8168;
+        --color-linen: #f2eae2;
+        --color-gunmetal: #1c232b;
+        --color-slate-gray: #6c7289;
+        --color-white: #ffffff;
+        --fluid-12-20: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
+        --fluid-16-24: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+        --fluid-20-30: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
+        --fluid-24-30: clamp(1.5rem, 1.368rem + 0.5634vw, 1.875rem);
+        --fluid-24-32: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+      }
+
+      /* Global styles */
+      body {
+        background: var(--color-linen);
+        color: var(--color-gunmetal);
+        display: grid;
+        font-family: var(--font-base);
+        font-size: 0.875rem;
+        font-weight: 500;
+        grid-template-rows: 1fr auto;
+        line-height: 1.6;
+      }
+
+      h2 {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      a {
+        color: currentColor;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      :focus {
+        outline: none;
+      }
+
+      :focus-visible {
+        outline-offset: 0.3ch;
+        outline: 2px solid;
+      }
+
+      main {
+        display: grid;
+        padding: 1rem;
+        place-items: center;
+      }
+
+      /* Compositional layouts */
+      .cluster {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space, 1rem);
+        justify-content: flex-start;
+      }
+
+      .fifty-fifty {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .fifty-fifty > * {
+        flex-basis: 250px;
+        flex-grow: 1;
+      }
+
+      /* Utilities */
+      .visually-hidden {
+        block-size: 1px;
+        clip-path: inset(50%);
+        inline-size: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      /* Blocks */
+      .button {
+        align-items: center;
+        background: var(--color-viridian);
+        border-radius: 8px;
+        border: transparent;
+        color: var(--color-white);
+        cursor: pointer;
+        display: inline-flex;
+        font-weight: 700;
+        gap: 0.75rem;
+        inline-size: 100%;
+        justify-content: center;
+        min-block-size: 44px;
+        min-inline-size: 10ch;
+        padding: 1rem;
+        text-align: center;
+        transition: 220ms all ease-in-out;
+      }
+
+      .button:where(:hover, :focus) {
+        background: #1a4032;
+      }
+
+      .button:active {
+        transform: scale(99%);
+      }
+
+      .card {
+        background: var(--color-white);
+        border-radius: 10px;
+        max-inline-size: 600px;
+        overflow: hidden;
+      }
+
+      .card .text {
+        padding: var(--fluid-24-32);
+      }
+
+      .card p {
+        color: var(--color-slate-gray);
+      }
+
+      .card .img img {
+        block-size: 100%;
+        inline-size: 100%;
+        object-fit: cover;
+      }
+
+      .card h2 {
+        margin-block-start: var(--fluid-12-20);
+      }
+
+      .card .text > :nth-last-child(3) {
+        margin-block-start: var(--fluid-16-24);
+      }
+
+      .card .text > :nth-last-child(2) {
+        --space: 1.25rem;
+        margin-block-end: var(--fluid-20-30);
+        margin-block-start: var(--fluid-24-30);
+      }
+
+      .price {
+        color: var(--color-viridian);
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .ribbon-text {
+        font-size: 0.75rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
+
+      .site-foot {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="visually-hidden">Product preview card component</h1>
+      <div class="card fifty-fifty">
+        <picture class="img">
+          <source
+            media="(min-width: 600px)"
+            srcset="assets/images/image-product-desktop.jpg"
+          />
+          <img
+            src="assets/images/image-product-mobile.jpg"
+            alt="A Chanel perfume bottle placed on a white surface, surrounded by vibrant green leaves."
+          />
+        </picture>
+        <div class="text">
+          <hgroup>
+            <p class="ribbon-text">Perfume</p>
+            <h2>Gabrielle Essence Eau De Parfum</h2>
+          </hgroup>
+          <p>
+            A floral, solar and voluptuous interpretation composed by Olivier
+            Polge, Perfumer-Creator for the House of CHANEL.
+          </p>
+          <p class="cluster">
+            <span class="price">$149.99</span>
+            <s><span class="visually-hidden">Old price: </span>$169.99</s>
+          </p>
+          <button type="button" class="button">
+            <img
+              src="assets/images/icon-cart.svg"
+              alt=""
+              aria-hidden="true"
+            /><span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer class="site-foot">
+      <p>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by Jasper.
+      </p>
+    </footer>
+  </body>
+</html>

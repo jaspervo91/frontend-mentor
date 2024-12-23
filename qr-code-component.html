@@ -27,6 +27,7 @@
         --space-500: 2.5rem;
         --space-300: 1.5rem;
         --space-200: 1rem;
+        --drop-shadow: 0 25px 25px hsla(0, 0%, 0%, 0.0477);
       }
 
       /* Global styles */
@@ -35,8 +36,8 @@
         color: var(--color-slate-900);
         display: flex;
         flex-direction: column;
-        font-size: 0.9375rem;
         font-family: "Outfit", sans-serif;
+        font-size: 0.9375rem;
         letter-spacing: 0.2px;
         line-height: 1.4;
       }
@@ -66,7 +67,6 @@
 
       main {
         display: flex;
-        flex-direction: column;
         flex: auto;
       }
 
@@ -84,7 +84,7 @@
       .card {
         background: var(--color-white);
         border-radius: 20px;
-        box-shadow: 0 25px 25px hsla(0, 0%, 0%, 0.0477);
+        box-shadow: var(--drop-shadow);
         margin: auto;
         max-inline-size: 320px;
         padding: var(--space-200);

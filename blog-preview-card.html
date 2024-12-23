@@ -28,6 +28,10 @@
         --space-150: 0.75rem;
         --space-100: 0.5rem;
         --space-50: 0.25rem;
+        --fluid-14-16: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+        --fluid-20-24: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+        --fluid-12-14: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
+        --drop-shadow: 8px 8px #000000;
       }
 
       /* Global styles */
@@ -36,15 +40,14 @@
         color: var(--color-gray-950);
         display: grid;
         font-family: "Figtree", sans-serif;
-        font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+        font-size: var(--fluid-14-16);
         font-weight: 500;
         grid-template-rows: 1fr auto;
       }
 
       h2 {
-        font-size: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+        font-size: var(--fluid-20-24);
         font-weight: 800;
-        line-height: 1.5;
       }
 
       a {
@@ -89,11 +92,28 @@
       }
 
       /* Blocks */
+      .author__avatar {
+        --space: var(--space-150);
+        font-size: 0.875rem;
+        font-weight: 800;
+      }
+
+      .badge {
+        background: var(--color-yellow);
+        border-radius: 4px;
+        color: var(--color-gray-950);
+        font-size: var(--fluid-12-14);
+        font-weight: 800;
+        inline-size: fit-content;
+        padding-block: var(--space-50);
+        padding-inline: var(--space-150);
+      }
+
       .card {
         background: var(--color-white);
         border-radius: 20px;
         border: 1px solid var(--color-gray-950);
-        box-shadow: 8px 8px #000000;
+        box-shadow: var(--drop-shadow);
         max-inline-size: clamp(20.4375rem, 19.1831rem + 5.3521vw, 24rem);
         padding: 1.5rem;
       }
@@ -133,22 +153,8 @@
         margin-block-start: 1.5rem;
       }
 
-      .badge {
-        background: var(--color-yellow);
-        border-radius: 4px;
-        font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
-        font-weight: 800;
-        inline-size: max-content;
-        padding: var(--space-50) var(--space-150);
-      }
-
       .card__meta {
-        font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
-      }
-
-      .author__avatar {
-        --space: var(--space-150);
-        font-weight: 800;
+        font-size: var(--fluid-12-14);
       }
 
       .site-foot {
@@ -168,7 +174,7 @@
           <p class="card__meta">
             Published <time datetime="2023-12-21">21 Dec 2023</time>
           </p>
-          <h2><a href="">HTML & CSS foundations</a></h2>
+          <h2><a href="#">HTML & CSS foundations</a></h2>
           <p>
             These languages are the backbone of every website, defining
             structure, content, and presentation.
