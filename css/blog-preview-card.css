@@ -1,0 +1,144 @@
+/* Variables */
+:root {
+  --color-yellow: #f4d04e;
+  --color-gray-950: #111111;
+  --color-gray-500: #6b6b6b;
+  --color-white: #ffffff;
+  --space-200: 1rem;
+  --space-150: 0.75rem;
+  --space-100: 0.5rem;
+  --space-50: 0.25rem;
+  /* @link https://utopia.fyi/clamp/calculator?a=375,1440,14—16|20—24|12—14 */
+  --fluid-14-16: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+  --fluid-20-24: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+  --fluid-12-14: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
+}
+
+/* Global styles */
+body {
+  background: var(--color-yellow);
+  color: var(--color-gray-950);
+  display: grid;
+  font-family: "Figtree", sans-serif;
+  font-size: var(--fluid-14-16);
+  font-weight: 500;
+  grid-template-rows: 1fr auto;
+}
+
+h2 {
+  font-size: var(--fluid-20-24);
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline-offset: 0.3ch;
+  outline: 2px solid;
+}
+
+main {
+  display: grid;
+  place-items: center;
+}
+
+/* Compositional layouts */
+.cluster {
+  align-items: var(--align, center);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  justify-content: var(--justify, flex-start);
+}
+
+/* Utilities */
+.visually-hidden {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Blocks */
+.author__avatar {
+  --space: var(--space-150);
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+
+.author__avatar img {
+  block-size: 2rem;
+  flex: none;
+  inline-size: auto;
+}
+
+.badge {
+  background: var(--color-yellow);
+  border-radius: 4px;
+  font-size: var(--fluid-12-14);
+  font-weight: 800;
+  inline-size: fit-content;
+  padding-block: var(--space-50);
+  padding-inline: var(--space-150);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 20px;
+  border: 1px solid var(--color-gray-950);
+  box-shadow: 8px 8px #000000;
+  max-inline-size: clamp(20.4375rem, 19.1831rem + 5.3521vw, 24rem);
+  padding: 1.5rem;
+}
+
+.card .text {
+  margin-block-start: 1.5rem;
+}
+
+.card p:not([class]) {
+  color: var(--color-gray-500);
+}
+
+.card .img {
+  block-size: 12.5rem;
+}
+
+.card .img img {
+  block-size: 100%;
+  border-radius: 10px;
+  inline-size: 100%;
+  object-fit: cover;
+}
+
+.card h2 a {
+  text-decoration: none;
+}
+
+.card h2 a:where(:hover, :focus) {
+  color: var(--color-yellow);
+}
+
+.card .text > * + * {
+  margin-block-start: var(--space-150);
+}
+
+.card .text > :last-child {
+  margin-block-start: 1.5rem;
+}
+
+.card__meta {
+  font-size: var(--fluid-12-14);
+}
+
+.site-foot {
+  padding: 1rem;
+}

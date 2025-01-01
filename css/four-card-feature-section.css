@@ -1,0 +1,184 @@
+/* Variables */
+:root {
+  --color-indian-red: #ea5454;
+  --color-robin-egg-blue: #44d3d2;
+  --color-orange: #fcae4a;
+  --color-blue-gray: #549ef2;
+  --color-davys-gray: #4d4f62;
+  --color-davys-gray-a50: hsla(234, 12%, 34%, 0.5);
+  --color-seasalt: #fafafa;
+  /* @link https://utopia.fyi/clamp/calculator?a=375,540,24—36|0.17—0.25 */
+  --fluid-24-36: clamp(1.5rem, -0.2045rem + 7.2727vw, 2.25rem);
+  --fluid-017-025: clamp(0.0106rem, -0.0007rem + 0.0485vw, 0.0156rem);
+  /* @link https://utopia.fyi/clamp/calculator?a=375,1440,28—32|56—64|32—40|24—30|80—64 */
+  --fluid-28-32: clamp(1.75rem, 1.662rem + 0.3756vw, 2rem);
+  --fluid-56-64: clamp(3.5rem, 3.3239rem + 0.7512vw, 4rem);
+  --fluid-32-40: clamp(2rem, 1.8239rem + 0.7512vw, 2.5rem);
+  --fluid-24-30: clamp(1.5rem, 1.368rem + 0.5634vw, 1.875rem);
+  --fluid-80-64: clamp(4rem, 5.3521rem + -1.5023vw, 5rem);
+}
+
+/* Global styles */
+body {
+  background: var(--color-seasalt);
+  color: var(--color-davys-gray);
+  display: grid;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9375rem;
+  grid-template-rows: 1fr auto;
+  letter-spacing: 0.1px;
+  line-height: 1.7;
+}
+
+h2,
+h3 {
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: var(--fluid-24-36);
+  font-weight: 200;
+  letter-spacing: var(--fluid-017-025);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline-offset: 0.3ch;
+  outline: 2px solid;
+}
+
+main {
+  padding-block: 5rem;
+  padding-inline: 2rem;
+}
+
+/* Compositional layouts */
+.grid {
+  --min: 250px;
+  display: grid;
+  gap: var(--gutter, 1rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--min), 100%), 1fr));
+}
+
+.wrapper {
+  margin-inline: auto;
+  max-inline-size: 1110px;
+}
+
+/* Utilities */
+.visually-hidden {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Blocks */
+.card {
+  background: #ffffff;
+  border-block-start: 4px solid;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px -11px hsla(213, 47%, 67%, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: var(--fluid-28-32);
+}
+
+.calculator {
+  border-color: var(--color-blue-gray);
+}
+
+.card p {
+  color: var(--color-davys-gray-a50);
+  font-size: 0.8125rem;
+  letter-spacing: 0.09px;
+  line-height: 1.8;
+}
+
+.card__icon {
+  inline-size: var(--fluid-56-64);
+  margin-block-start: auto;
+  margin-inline-start: auto;
+  padding-block-start: var(--fluid-32-40);
+}
+
+.cards {
+  --gutter: var(--fluid-24-30);
+  margin-block-start: var(--fluid-80-64);
+}
+
+.intro {
+  margin-inline: auto;
+  max-inline-size: 540px;
+  text-align: center;
+}
+
+.intro h2 + p {
+  font-size: var(--fluid-24-36);
+  font-weight: 600;
+  letter-spacing: var(--fluid-017-025);
+}
+
+.intro__content {
+  color: var(--color-davys-gray-a50);
+  margin-block-start: 1rem;
+}
+
+.karma {
+  border-color: var(--color-orange);
+}
+
+.site-foot {
+  padding: 1rem;
+}
+
+.supervisor {
+  border-color: var(--color-robin-egg-blue);
+}
+
+.team-builder {
+  border-color: var(--color-indian-red);
+}
+
+@media (min-width: 1020px) {
+  .calculator {
+    grid-area: calculator;
+  }
+
+  .cards {
+    grid-template-areas:
+      ". team-builder ."
+      "supervisor team-builder calculator"
+      "supervisor karma calculator"
+      ". karma .";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .karma {
+    grid-area: karma;
+  }
+
+  .supervisor {
+    grid-area: supervisor;
+  }
+
+  .team-builder {
+    grid-area: team-builder;
+  }
+}

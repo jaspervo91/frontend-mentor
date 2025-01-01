@@ -1,0 +1,171 @@
+/* Variables */
+:root {
+  --font-base: "Montserrat", sans-serif;
+  --font-display: "Fraunces", serif;
+  --color-viridian: #3d8168;
+  --color-linen: #f2eae2;
+  --color-gunmetal: #1c232b;
+  --color-slate-gray: #6c7289;
+  --color-white: #ffffff;
+  /* @link https://utopia.fyi/clamp/calculator?a=375,1440,24—32|12—20|16—24|20—30|24—30 */
+  --fluid-24-32: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+  --fluid-12-20: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
+  --fluid-16-24: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+  --fluid-20-30: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
+  --fluid-24-30: clamp(1.5rem, 1.368rem + 0.5634vw, 1.875rem);
+}
+
+/* Global styles */
+body {
+  background: var(--color-linen);
+  color: var(--color-gunmetal);
+  display: grid;
+  font-family: var(--font-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  grid-template-rows: 1fr auto;
+  line-height: 1.6;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline-offset: 0.3ch;
+  outline: 2px solid;
+}
+
+main {
+  display: grid;
+  padding-block: 1.75rem;
+  padding-inline: 1rem;
+  place-items: center;
+}
+
+/* Compositional layouts */
+.cluster {
+  align-items: var(--align, center);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  justify-content: var(--justify, flex-start);
+}
+
+.fifty-fifty {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fifty-fifty > * {
+  flex-basis: 250px;
+  flex-grow: 1;
+}
+
+/* Utilities */
+.visually-hidden {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Blocks */
+.button {
+  align-items: center;
+  background: var(--color-viridian);
+  border-radius: 8px;
+  border: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.75rem;
+  justify-content: center;
+  line-height: 1.2;
+  min-block-size: 44px;
+  min-inline-size: 10ch;
+  padding: 1rem;
+  text-align: center;
+  transition: 220ms all ease-in-out;
+}
+
+.button:where(:hover, :focus) {
+  background: #1a4032;
+}
+
+.button:active {
+  transform: scale(99%);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 10px;
+  max-inline-size: 600px;
+  overflow: hidden;
+}
+
+.card .text {
+  display: flex;
+  flex-direction: column;
+  padding: var(--fluid-24-32);
+}
+
+.card p {
+  color: var(--color-slate-gray);
+}
+
+.card .img img {
+  block-size: 100%;
+  inline-size: 100%;
+  object-fit: cover;
+}
+
+.card h2 {
+  margin-block-start: var(--fluid-12-20);
+}
+
+.card .text > :nth-last-child(3) {
+  margin-block-start: var(--fluid-16-24);
+}
+
+.card .text > :nth-last-child(2) {
+  --space: 1.25rem;
+  margin-block-end: var(--fluid-20-30);
+  margin-block-start: var(--fluid-24-30);
+}
+
+.card .text > :last-child {
+  margin-block-start: auto;
+}
+
+.price {
+  color: var(--color-viridian);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ribbon-text {
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.site-foot {
+  padding: 1rem;
+}

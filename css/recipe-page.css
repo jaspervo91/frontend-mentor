@@ -1,0 +1,223 @@
+/* Variables */
+:root {
+  --font-base: "Outfit", sans-serif;
+  --font-display: "Young Serif", serif;
+  --color-rose-800: #7a284e;
+  --color-rose-50: #fff7fb;
+  --color-stone-900: #312e2c;
+  --color-stone-600: #5f564d;
+  --color-stone-150: #e3ddd7;
+  --color-stone-100: #f3e5d7;
+  --color-brown-800: #854632;
+  --color-white: #ffffff;
+  --space-1600: 8rem;
+  --space-600: 3rem;
+  --space-500: 2.5rem;
+  --space-400: 2rem;
+  --space-300: 1.5rem;
+  --space-200: 1rem;
+  --space-150: 0.75rem;
+  --space-100: 0.5rem;
+}
+
+/* Global styles */
+body {
+  background: var(--color-stone-100);
+  color: var(--color-stone-900);
+  display: grid;
+  font-family: var(--font-base);
+  grid-template-rows: 1fr auto;
+}
+
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  color: var(--color-brown-800);
+  font-size: 1.75rem;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ul,
+ol {
+  padding-inline-start: 1.7ch;
+}
+
+:is(ul, ol) > li {
+  padding-inline-start: var(--space-200);
+}
+
+ul ::marker {
+  color: var(--color-brown-800);
+  font-size: 0.5lh;
+}
+
+ol ::marker {
+  color: var(--color-brown-800);
+  font-size: 1em;
+  font-weight: 700;
+}
+
+table {
+  border-collapse: collapse;
+  inline-size: 100%;
+}
+
+th {
+  font-weight: 400;
+  padding-inline-start: var(--space-400);
+  text-align: start;
+}
+
+td,
+th {
+  padding-block: var(--space-150);
+}
+
+tr + tr :is(th, td) {
+  border-block-start: 1px solid var(--color-stone-150);
+}
+
+td {
+  color: var(--color-brown-800);
+  font-weight: 700;
+  padding-inline-end: var(--space-400);
+  padding-inline-start: var(--space-200);
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline-offset: 0.3ch;
+  outline: 2px solid;
+}
+
+hr {
+  border: none;
+  border-block-start: 1px solid var(--color-stone-150);
+}
+
+@media (min-width: 750px) {
+  main {
+    padding-block: var(--space-1600);
+    padding-inline: var(--space-600);
+  }
+}
+
+/* Compositional layouts */
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+/* Utilities */
+.font-bold {
+  font-weight: 700;
+}
+
+.visually-hidden {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Blocks */
+.card {
+  background: var(--color-white);
+  color: var(--color-stone-600);
+}
+
+.card .text {
+  padding-block: var(--space-500);
+  padding-inline: var(--space-400);
+}
+
+.card h2 {
+  color: var(--color-stone-900);
+}
+
+@media (min-width: 750px) {
+  .card {
+    border-radius: 24px;
+    margin-inline: auto;
+    max-inline-size: clamp(38.5rem, 29.9286rem + 17.8571vw, 46rem);
+    padding: var(--space-500);
+  }
+
+  .card .text {
+    margin-block-start: var(--space-500);
+    padding: 0;
+  }
+
+  .card .img {
+    block-size: 18.75rem;
+  }
+
+  .card .img img {
+    block-size: 100%;
+    border-radius: 12px;
+    inline-size: 100%;
+    object-fit: cover;
+  }
+}
+
+.prep-time {
+  background: var(--color-rose-50);
+  border-radius: 12px;
+  padding: var(--space-300);
+}
+
+.prep-time h3 {
+  color: var(--color-rose-800);
+  font-family: var(--font-base);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.prep-time ul {
+  margin-block-start: var(--space-200);
+}
+
+.prep-time ul ::marker {
+  color: var(--color-rose-800);
+}
+
+.prose {
+  --flow-space: var(--space-400);
+}
+
+.prose :is(h2, h3) + * {
+  --flow-space: var(--space-300);
+}
+
+.prose table {
+  --flow-space: var(--space-300);
+}
+
+.prose :is(ul, ol) li + li {
+  margin-block-start: var(--space-100);
+}
+
+.site-foot {
+  padding: 1rem;
+}

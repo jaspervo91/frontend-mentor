@@ -1,0 +1,86 @@
+/* Variables */
+:root {
+  --color-slate-900: #1f314f;
+  --color-slate-500: #68778d;
+  --color-slate-300: #d5e1ef;
+  --color-white: #ffffff;
+  --space-500: 2.5rem;
+  --space-300: 1.5rem;
+  --space-200: 1rem;
+}
+
+/* Global styles */
+body {
+  background: var(--color-slate-300);
+  color: var(--color-slate-900);
+  display: flex;
+  flex-direction: column;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9375rem;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 1.375rem;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline-offset: 0.3ch;
+  outline: 2px solid;
+}
+
+main {
+  display: flex;
+  flex: auto;
+}
+
+/* Utilities */
+.visually-hidden {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Blocks */
+.card {
+  background: var(--color-white);
+  border-radius: 20px;
+  box-shadow: 0 25px 25px hsla(0, 0%, 0%, 0.0477);
+  margin: auto;
+  max-inline-size: 320px;
+  padding: var(--space-200);
+  padding-block-end: var(--space-500);
+  text-align: center;
+}
+
+.card .text {
+  margin-block-start: var(--space-300);
+  padding-inline: var(--space-200);
+}
+
+.card p {
+  color: var(--color-slate-500);
+  margin-block-start: var(--space-200);
+}
+
+.card .img img {
+  border-radius: 10px;
+}
+
+.site-foot {
+  padding: 1rem;
+}
