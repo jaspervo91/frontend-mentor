@@ -1,0 +1,189 @@
+/* Variables */
+:root {
+  --color-lavender: #e0e8ff;
+  --color-palatinate-blue: #382ae1;
+  --color-ghost-white: #f7f9ff;
+  --color-glaucous: #717fa6;
+  --color-delft-blue: #1f2e55;
+  /* @link https://utopia.fyi/clamp/calculator?a=375,1440,15—16|22—28|13—14|32—48|24—48|24—32|24—20|16—24|14—16 */
+  --fluid-15-16: clamp(0.9375rem, 0.9155rem + 0.0939vw, 1rem);
+  --fluid-22-28: clamp(1.375rem, 1.243rem + 0.5634vw, 1.75rem);
+  --fluid-13-14: clamp(0.8125rem, 0.7905rem + 0.0939vw, 0.875rem);
+  --fluid-32-48: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+  --fluid-24-48: clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+  --fluid-24-32: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+  --fluid-24-20: clamp(1.25rem, 1.588rem + -0.3756vw, 1.5rem);
+  --fluid-16-24: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+  --fluid-14-16: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+}
+
+/* Global styles */
+body {
+  background: url(../images/pattern-background-mobile.svg) top center / 100%
+    no-repeat var(--color-lavender);
+  color: var(--color-delft-blue);
+  display: grid;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: var(--fluid-15-16);
+  font-weight: 500;
+  grid-template-rows: 1fr auto;
+  line-height: 1.6;
+}
+
+@media (min-width: 1020px) {
+  body {
+    background-image: url(../images/pattern-background-desktop.svg);
+  }
+}
+
+h2 {
+  font-size: var(--fluid-22-28);
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline-offset: 0.3ch;
+  outline: 2px solid;
+}
+
+main {
+  display: grid;
+  place-items: center;
+}
+
+/* Compositional layouts */
+.cluster {
+  align-items: var(--align, center);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  justify-content: var(--justify, flex-start);
+}
+
+/* Utilities */
+.visually-hidden {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Blocks */
+.button {
+  --button-bg: var(--color-palatinate-blue);
+  --button-color: #ffffff;
+  --button-hover-bg: #766cf1;
+  --button-hover-color: #ffffff;
+  background: var(--button-bg);
+  border-radius: 11px;
+  border: transparent;
+  box-shadow: 0 20px 20px hsla(245, 75%, 52%, 0.1903);
+  color: var(--button-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 900;
+  inline-size: 100%;
+  line-height: 1.3;
+  min-block-size: 44px;
+  min-inline-size: 10ch;
+  padding: 1rem;
+  text-decoration: var(--button-text-decoration, none);
+  transition: 220ms all ease-in-out;
+}
+
+.button:where(:hover, :focus) {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-color);
+  text-decoration: none;
+}
+
+.button:active {
+  transform: scale(99%);
+}
+
+.button[data-button-variant="link"] {
+  --button-bg: transparent;
+  --button-color: var(--color-palatinate-blue);
+  --button-hover-bg: transparent;
+  --button-hover-color: #766cf1;
+  --button-text-decoration: underline;
+  box-shadow: none;
+  font-size: var(--fluid-13-14);
+  font-weight: 700;
+  inline-size: unset;
+  min-inline-size: unset;
+  padding: 0;
+}
+
+.button[data-ghost-button] {
+  --button-bg: transparent;
+  --button-color: var(--color-glaucous);
+  --button-hover-bg: transparent;
+  --button-hover-color: var(--color-delft-blue);
+  box-shadow: none;
+  padding: 0;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 40px 40px -20px hsla(228, 87%, 40%, 0.1518);
+  max-inline-size: clamp(20.4375rem, 17.7306rem + 11.5493vw, 28.125rem);
+  overflow: hidden;
+  text-align: center;
+}
+
+.card .text {
+  padding-block: var(--fluid-32-48);
+  padding-inline: var(--fluid-24-48);
+}
+
+.card p:not([class]) {
+  color: var(--color-glaucous);
+}
+
+.card .text > * + * {
+  margin-block-start: var(--fluid-24-32);
+}
+
+.card .text > :nth-last-child(4) {
+  margin-block-start: 1rem;
+}
+
+.card .text > :nth-last-child(3) {
+  margin-block-start: var(--fluid-24-20);
+}
+
+.plan {
+  --space: 1.25rem;
+  background: var(--color-ghost-white);
+  border-radius: 11px;
+  padding: var(--fluid-16-24);
+}
+
+.plan-details {
+  flex: 2;
+  font-size: var(--fluid-14-16);
+  line-height: 1.3;
+  text-align: start;
+}
+
+.plan-name {
+  font-weight: 900;
+}
+
+.site-foot {
+  padding: 1rem;
+}
